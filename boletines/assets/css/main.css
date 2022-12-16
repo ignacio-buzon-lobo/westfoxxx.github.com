@@ -1,0 +1,159 @@
+/* Esto es un comentario en css */
+/* Es buena practica ir colocando aqui
+los diferentes colores de la paleta
+Rosa: #C6426E
+Negro: #999
+...
+*/
+
+h1{
+    font-family: 'Caveat', cursive;
+}
+
+
+html{
+    font-family: 'Roboto', sans-serif;
+
+}
+a{
+    text-decoration: none;
+    color: #C6426E;
+}
+a:hover{ /* Asi es como se marcan las pseudoclases */
+    opacity: 0.8;
+}
+img{
+    max-width: 100%;
+}
+
+.title{
+    text-transform: uppercase;
+    text-align:center;
+}
+
+.container{
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh; /* Alto total de la pantalla, la mitad seria 50vh */  
+    display: flex; /* Para centrar elementos en la página, mirar Flexbox */
+    align-items: center;
+    justify-content: center; 
+}
+.content{
+    max-width: 960px;
+    width: 100%;
+    height: 80vh;
+    background-color: white;
+    /*box-shadow: diferenciaHorizontal diferenciaVertical desenfoque amplitud color; */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 4px;
+    position: relative;
+    overflow:scroll;
+}
+.content{
+    padding: 1em;
+}
+td{
+    display: block;
+    width: 100%;
+}
+td:nth-of-type(1){
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #C6426E;
+}
+th{
+    display: none;
+}
+
+.actions{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+.close{
+    height: 40px;
+    width: 40px;
+    color: white;
+    border-radius: 50%;
+    background-color: #C6426E;
+    display: inline-block;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paragraph{
+    line-height: 1.8em;
+}
+
+.fa-star{
+    color: #ffc400;
+}
+
+.table{
+    width: 100%;
+    border-spacing: 0;
+}
+.table td, .table th{
+    padding: 1em;
+    text-align: left;
+}
+
+.table tr:nth-child(even){background-color:#f3e5f5 ;}
+
+.title-item{
+    /*border-bottom-style: solid;
+    border-width: 2px;
+    border-color: #c471ed;
+    Shorthand Properties, para acortar esto:*/
+    font-size: 2em;
+    border-bottom: solid 2px #c471ed;
+    padding-bottom: 1em;
+}
+.address{
+    font-weight: bold;
+    color: #C6426E;
+    font-size: 1.2em;
+    margin-top: 1em;
+    display: inline-block;
+}
+
+.main-image{
+    float: left;
+    margin-right: 1em;
+    height: 250px;
+}
+.position{
+    background-color: #c471ed;
+    color: white;
+    padding: 0.5em;
+    border-radius: 4px 4px 4px 4px;
+}
+
+@media (min-height:550px){     /* Esto es una Media Querie */
+    .content{
+        height: 500px;
+    }
+}
+
+@media (min-width:900px){
+    th{
+        display: table-cell;
+    }
+    td{
+        width: auto;
+        display: table-cell;
+    }
+    td:nth-of-type(1){
+        font-size: 1em;
+    }
+    .content{
+        padding: 1.8em;
+    }
+}
