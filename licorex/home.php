@@ -19,16 +19,10 @@ include('connection.php')
   <!-- Ruta a la Framework7 Library Bundle CSS -->
   <link rel="stylesheet" href="node_modules\framework7\framework7-bundle.min.css">
   <!-- Rutas a los estilos personalizados -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css\estilos.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <style>
-    th.label-cell {
-      font-weight: bold;
-    }
-  </style>
 
 </head>
 
@@ -42,7 +36,7 @@ include('connection.php')
         <img src="images/logoapp.png" class="external">
       </div>
       <div class="list" style="margin-top: 0;">
-        <!-- Elementos del menu lateral -->
+      <!-- Elementos del menu lateral -->
         <ul>
           <li><a href="home.php" class="item-link item-content external" style="margin-top: 0;">INICIO<i
                 class="material-icons icono">home</i></a></li>
@@ -59,13 +53,14 @@ include('connection.php')
         </ul>
       </div>
       <div>
-        <!-- Letras logo app -->
+          <!-- Letras logo app -->
         <img src="images/letraslic.png" class="external" style="position: absolute; bottom: 0;">
       </div>
     </div>
 
     <div class="view view-main">
-      <div data-name="home" class="page">
+
+    <div data-name="home" class="page">
 
         <!-- Top Navbar -->
         <div class="navbar">
@@ -73,8 +68,7 @@ include('connection.php')
 
           <div class="navbar-inner">
             <div class="left">
-              <!-- Icono de las tres lineas que despliega el panel lateral -->
-
+                            <!-- Icono de las tres lineas que despliega el panel lateral -->
               <a href="#" class="link panel-open" data-panel="left" data-panel-id="panel-menu">
                 <span class="material-symbols-outlined">
                   menu
@@ -83,9 +77,10 @@ include('connection.php')
 
             </div>
             <div class="title">
-              <!-- Imagen letras LicoreX -->
-
-              <img src="images/letraslic.png" class="external img1">
+              <div class="imagen-titulo">
+                              <!-- Imagen letras LicoreX -->
+                <img src="images/letraslic.png" class="external img1">
+              </div>
             </div>
           </div>
         </div>
@@ -113,64 +108,66 @@ include('connection.php')
           </div>
         </div>
 
-        <!-- Contenido de la página sobre el que se puede hacer scroll -->
+        <!-- CONTENIDO DE LA PÁGINA -->
         <div class="page-content">
-          <div class="card data-table data-table-collapsible data-table-init">
-            <div class="card-header">
-              <div class="data-table-title">Distribuidores</div>
-
+          <div class="swiper-swiper-slide">
+            <div class="popup popup-black" id="my-popup" style="background-color: #000;">
+              <div class="popup-inner">
+                <img src="images/logoapp.png" class="external">
+                <img src="images/letraslic.png" class="external">
+              </div>
             </div>
-            <div class="card-content">
-              <table>
-                <thead>
-                  <tr>
-                    <th class="label-cell" style="color: #D0BDA4; font-weight: bold;">Nombre:</th>
-                    <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Email:</th>
-                    <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Teléfono:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  // Conecta con la base de datos
-                  
-                  require("connection.php");
-                  // Se hace una consulta a la base de datos para obtener los distribuidores
-                  $sql = $pdo->query("SELECT * FROM distribuidores");
-                  // Se muestran los distribuidores en la tabla
-                  
-                  while ($resultado = $sql->fetch(PDO::FETCH_ASSOC)) {
-
-                    echo '<tr>';
-                    // Muestra el nombre del distribuidor como un enlace a la página "pedidosxdistri.php"
-                    echo '<td class="label-cell"><a href="pedidosxdistri.php?distribuidor_id=' . $resultado['distribuidor_id'] . '" class="item-link item-content external" style="color: #D0BDA4"><strong>' . $resultado['nombre'] . '</strong></a></td>';
-                    // Muestra el correo electrónico del distribuidor como un enlace para enviar un correo electrónico
-                    echo '<td class="numeric-cell"><a href="mailto:' . $resultado['email'] . '" class="item-link item-content external" style="color: #D0BDA4">' . $resultado['email'] . '</a></td>';
-                    // Muestra el número de teléfono del distribuidor como un enlace para realizar una llamada telefónica
-                    echo '<td class="numeric-cell"><a href="tel:' . $resultado['telefono'] . '" class="item-link item-content external" style="color: #D0BDA4">' . $resultado['telefono'] . '</a></td>';
-
-                    echo '</tr>';
-                  }
-
-                  ?>
-
-                </tbody>
-              </table>
+        <!-- Imágenes sobre las que se puede pinchar y llevan a las diferentes secciones de la app -->
+            <div class="image-container">
+              <a href="hacerpedidos.php" class="item-link item-content external">
+                <img src="images/hacerpedido.png" alt="Imagen 1">
+              </a>
+              <a href="registropedidos.php" class="item-link item-content external">
+                <img src="images/registropedidos.png" alt="Imagen 2">
+              </a>
+              <a href="distribuidores.php" class="item-link item-content external">
+                <img src="images/distribuidores.png" alt="Imagen 3">
+              </a>
+              <a href="hacercaja.php" class="item-link item-content external">
+                <img src="images/hacercaja.png" alt="Imagen 4">
+              </a>
+              <a href="registrocaja.php" class="item-link item-content external">
+                <img src="images/registrocajas.png" alt="Imagen 5">
+              </a>
             </div>
           </div>
-
         </div>
 
       </div>
     </div>
-
-
-  </div>
-  </div>
   </div>
   <!-- Ruta a la Framework7 Library Bundle JS-->
   <script type="text/javascript" src="node_modules\framework7\framework7-bundle.min.js"></script>
   <!-- Ruta al archivo js de la app-->
   <script type="text/javascript" src="js\app.js"></script>
+  <script>
+    // Verificar si el popup ya se ha mostrado anteriormente
+    var popupShown = localStorage.getItem('popupShown');
+
+    if (!popupShown) {
+      var myPopup = app.popup.create({
+        el: '#my-popup',
+        on: {
+          open: function () {
+            setTimeout(function () {
+              myPopup.close();
+            }, 2000);
+          }
+        }
+      });
+
+      myPopup.open();
+
+      // Marcar el popup como mostrado en el almacenamiento local
+      localStorage.setItem('popupShown', 'true');
+    }
+
+  </script>
 </body>
 
 </html>

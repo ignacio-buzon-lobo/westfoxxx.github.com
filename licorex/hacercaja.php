@@ -19,21 +19,15 @@ include('connection.php')
   <!-- Ruta a la Framework7 Library Bundle CSS -->
   <link rel="stylesheet" href="node_modules\framework7\framework7-bundle.min.css">
   <!-- Rutas a los estilos personalizados -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css\estilos.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <style>
-    th.label-cell {
-      font-weight: bold;
-    }
-  </style>
 
 </head>
 
 <body>
-
+  <!-- App root element -->
   <div id="app">
     <!-- Menu lateral -->
     <div class="panel panel-left fondo-panel">
@@ -59,7 +53,6 @@ include('connection.php')
         </ul>
       </div>
       <div>
-        <!-- Letras logo app -->
         <img src="images/letraslic.png" class="external" style="position: absolute; bottom: 0;">
       </div>
     </div>
@@ -74,7 +67,6 @@ include('connection.php')
           <div class="navbar-inner">
             <div class="left">
               <!-- Icono de las tres lineas que despliega el panel lateral -->
-
               <a href="#" class="link panel-open" data-panel="left" data-panel-id="panel-menu">
                 <span class="material-symbols-outlined">
                   menu
@@ -84,7 +76,6 @@ include('connection.php')
             </div>
             <div class="title">
               <!-- Imagen letras LicoreX -->
-
               <img src="images/letraslic.png" class="external img1">
             </div>
           </div>
@@ -115,56 +106,59 @@ include('connection.php')
 
         <!-- Contenido de la página sobre el que se puede hacer scroll -->
         <div class="page-content">
-          <div class="card data-table data-table-collapsible data-table-init">
-            <div class="card-header">
-              <div class="data-table-title">Distribuidores</div>
-
+          <div class="block-title">HACER CAJA:</div>
+          <!-- Formulario para registrar una caja -->
+          <form id="cajas-form" method="POST" action="registrocaja.php">
+            <div class="list">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Fecha</div>
+                    <div class="item-input-wrap">
+                      <!-- Campo de entrada de fecha -->
+                      <input type="date" name="fecha" required>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Cantidad en efectivo</div>
+                    <div class="item-input-wrap">
+                      <!-- Campo de entrada de cantidad en efectivo -->
+                      <input type="number" name="efectivo" required>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">TPV1</div>
+                    <div class="item-input-wrap">
+                      <!-- Campo de entrada de TPV1 -->
+                      <input type="number" name="tpv1" required>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">TPV2</div>
+                    <div class="item-input-wrap">
+                      <!-- Campo de entrada de TPV2 -->
+                      <input type="number" name="tpv2" required>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div class="card-content">
-              <table>
-                <thead>
-                  <tr>
-                    <th class="label-cell" style="color: #D0BDA4; font-weight: bold;">Nombre:</th>
-                    <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Email:</th>
-                    <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Teléfono:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  // Conecta con la base de datos
-                  
-                  require("connection.php");
-                  // Se hace una consulta a la base de datos para obtener los distribuidores
-                  $sql = $pdo->query("SELECT * FROM distribuidores");
-                  // Se muestran los distribuidores en la tabla
-                  
-                  while ($resultado = $sql->fetch(PDO::FETCH_ASSOC)) {
-
-                    echo '<tr>';
-                    // Muestra el nombre del distribuidor como un enlace a la página "pedidosxdistri.php"
-                    echo '<td class="label-cell"><a href="pedidosxdistri.php?distribuidor_id=' . $resultado['distribuidor_id'] . '" class="item-link item-content external" style="color: #D0BDA4"><strong>' . $resultado['nombre'] . '</strong></a></td>';
-                    // Muestra el correo electrónico del distribuidor como un enlace para enviar un correo electrónico
-                    echo '<td class="numeric-cell"><a href="mailto:' . $resultado['email'] . '" class="item-link item-content external" style="color: #D0BDA4">' . $resultado['email'] . '</a></td>';
-                    // Muestra el número de teléfono del distribuidor como un enlace para realizar una llamada telefónica
-                    echo '<td class="numeric-cell"><a href="tel:' . $resultado['telefono'] . '" class="item-link item-content external" style="color: #D0BDA4">' . $resultado['telefono'] . '</a></td>';
-
-                    echo '</tr>';
-                  }
-
-                  ?>
-
-                </tbody>
-              </table>
+            <div class="row">
+              <div class="col-100">
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="button button-fill button-round custom-color">Registrar</button>
+              </div>
             </div>
-          </div>
-
+          </form>
         </div>
-
       </div>
     </div>
-
-
-  </div>
   </div>
   </div>
   <!-- Ruta a la Framework7 Library Bundle JS-->

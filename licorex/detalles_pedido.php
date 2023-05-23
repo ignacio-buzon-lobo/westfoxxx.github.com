@@ -19,16 +19,10 @@ include('connection.php')
   <!-- Ruta a la Framework7 Library Bundle CSS -->
   <link rel="stylesheet" href="node_modules\framework7\framework7-bundle.min.css">
   <!-- Rutas a los estilos personalizados -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css\estilos.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <style>
-    th.label-cell {
-      font-weight: bold;
-    }
-  </style>
 
 </head>
 
@@ -42,7 +36,7 @@ include('connection.php')
         <img src="images/logoapp.png" class="external">
       </div>
       <div class="list" style="margin-top: 0;">
-        <!-- Elementos del menu lateral -->
+      <!-- Elementos del menu lateral -->
         <ul>
           <li><a href="home.php" class="item-link item-content external" style="margin-top: 0;">INICIO<i
                 class="material-icons icono">home</i></a></li>
@@ -65,6 +59,7 @@ include('connection.php')
     </div>
 
     <div class="view view-main">
+
       <div data-name="home" class="page">
 
         <!-- Top Navbar -->
@@ -74,7 +69,6 @@ include('connection.php')
           <div class="navbar-inner">
             <div class="left">
               <!-- Icono de las tres lineas que despliega el panel lateral -->
-
               <a href="#" class="link panel-open" data-panel="left" data-panel-id="panel-menu">
                 <span class="material-symbols-outlined">
                   menu
@@ -84,7 +78,6 @@ include('connection.php')
             </div>
             <div class="title">
               <!-- Imagen letras LicoreX -->
-
               <img src="images/letraslic.png" class="external img1">
             </div>
           </div>
@@ -115,49 +108,48 @@ include('connection.php')
 
         <!-- Contenido de la página sobre el que se puede hacer scroll -->
         <div class="page-content">
-          <div class="card data-table data-table-collapsible data-table-init">
-            <div class="card-header">
-              <div class="data-table-title">Distribuidores</div>
+          <div class="block-title">DETALLES DEL PEDIDO:</div>
+          <!-- Datatable de los productos -->
+          <div class="data-table">
+            <table>
+              <thead>
+                <tr>
+                  <th class="label-cell" style="color: #D0BDA4; font-weight: bold;">Producto</th>
+                  <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Cantidad</th>
+                  <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                // Conecta con la base de datos
+                require("connection.php");
+                // Obtener el pedido_id desde la URL
+                $pedido_id = $_GET['pedido_id'];
+                // Se hace una consulta a la base de datos para obtener los productos
+                $sql = $pdo->query("SELECT * FROM lineas_pedidos WHERE pedido_id = $pedido_id");
 
-            </div>
-            <div class="card-content">
-              <table>
-                <thead>
-                  <tr>
-                    <th class="label-cell" style="color: #D0BDA4; font-weight: bold;">Nombre:</th>
-                    <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Email:</th>
-                    <th class="numeric-cell" style="color: #D0BDA4; font-weight: bold;">Teléfono:</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  // Conecta con la base de datos
-                  
-                  require("connection.php");
-                  // Se hace una consulta a la base de datos para obtener los distribuidores
-                  $sql = $pdo->query("SELECT * FROM distribuidores");
-                  // Se muestran los distribuidores en la tabla
-                  
-                  while ($resultado = $sql->fetch(PDO::FETCH_ASSOC)) {
+                // Se muestran los productos en la tabla
+                while ($resultado = $sql->fetch(PDO::FETCH_ASSOC)) {
+                  echo '<tr>';
 
-                    echo '<tr>';
-                    // Muestra el nombre del distribuidor como un enlace a la página "pedidosxdistri.php"
-                    echo '<td class="label-cell"><a href="pedidosxdistri.php?distribuidor_id=' . $resultado['distribuidor_id'] . '" class="item-link item-content external" style="color: #D0BDA4"><strong>' . $resultado['nombre'] . '</strong></a></td>';
-                    // Muestra el correo electrónico del distribuidor como un enlace para enviar un correo electrónico
-                    echo '<td class="numeric-cell"><a href="mailto:' . $resultado['email'] . '" class="item-link item-content external" style="color: #D0BDA4">' . $resultado['email'] . '</a></td>';
-                    // Muestra el número de teléfono del distribuidor como un enlace para realizar una llamada telefónica
-                    echo '<td class="numeric-cell"><a href="tel:' . $resultado['telefono'] . '" class="item-link item-content external" style="color: #D0BDA4">' . $resultado['telefono'] . '</a></td>';
+                  // Consulta para obtener el nombre del producto
+                  $producto_id = $resultado['producto_id'];
+                  $consulta_producto = $pdo->query("SELECT nombre FROM productos WHERE producto_id = $producto_id");
+                  $nombre_producto = $consulta_producto->fetch(PDO::FETCH_ASSOC)['nombre'];
+                  // Muestra el nombre del producto en la celda de la tabla
+                  echo '<td class="label-cell">' . $nombre_producto . '</td>';
+                  // Muestra la cantidad del producto en la celda de la tabla
+                  echo '<td class="numeric-cell">' . $resultado['cantidad'] . '</td>';
+                  // Muestra el subtotal del producto en la celda de la tabla
+                  echo '<td class="numeric-cell">' . $resultado['subtotal'] . '€</td>';
+                  echo '</tr>';
+                }
+                ?>
 
-                    echo '</tr>';
-                  }
 
-                  ?>
-
-                </tbody>
-              </table>
-            </div>
+              </tbody>
+            </table>
           </div>
-
         </div>
 
       </div>

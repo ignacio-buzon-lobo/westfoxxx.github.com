@@ -12,6 +12,30 @@ main {
 	height: 100%;
 }
 
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.imagen-titulo {
+  display: flex;
+  justify-content: center;
+}
+
+
+
 .swiper-container {
 	height: 100%;
 }
@@ -43,9 +67,13 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
+
+    color: #D0BDA4;
   }
-  
+  .custom-color {
+    background-color: #D0BDA4; /* Valor hexadecimal para el color rojo */
+    color: black;
+  }
   .menu {
     display: flex;
     height: 100vh;
@@ -71,4 +99,105 @@ main {
     object-fit: cover;
   }
   
+  .img1 {
+    max-width: 200px;
+    max-height: 400px;
+    display: block; /* Asegura que la imagen se muestre como bloque */
+  }
+
+  .fecha-columna {
+    width: 1500px;
+  }
   
+  #tabla-cajas {
+    table-layout: fixed;
+  }
+  
+  .popup-black {
+    background-color: #000;
+  }
+  
+  .page {
+    background-image: linear-gradient(#000000, #232424);
+
+  }
+
+  .navbar-inner {
+    background-color: #000;
+  }
+
+  .material-symbols-outlined{
+    color: #D0BDA4;
+  }
+
+  body {
+    color: #D0BDA4; /* Cambia el color de la fuente a rojo */
+  }
+
+  .fondo-panel, .pie{
+    background-color: #232424;
+  }
+
+  .icono {
+    color: #D0BDA4;
+  }
+
+  .toolbar-inner.pie {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .item-link.item-content.external {
+    margin: 0 5px;
+  }
+
+  .block-title{
+    color: #D0BDA4;
+  }
+  .label-cell {
+    color: #D0BDA4; /* Color personalizado en formato hexadecimal */
+  }
+  
+  .numeric-cell {
+    color: #D0BDA4; /* Color personalizado en formato hexadecimal */
+  }
+  
+  .card.data-table {
+    background-color: #232424; /* Color de fondo personalizado en formato hexadecimal */
+  }
+  .card-header .data-table-title {
+    color: #D0BDA4; /* Color de texto personalizado en formato hexadecimal */
+  }
+  
+
+
+  /* Cambiar el color de fondo del encabezado del accordion 
+  .accordion-item .item-content {
+    background-color: #232424;
+  }
+  .accordion-item .item-content .item-title {
+    color: #D0BDA4;
+  }
+
+  /* Cambiar el color de fondo del contenido del accordion 
+  .accordion-item-content {
+    background-color: lightblue;
+    color: red;
+  }
+  */
+
+  /* Cambiar el color del texto en la tabla */
+.data-table table.dataTable td,
+.data-table table.dataTable th {
+  color: blue;
+}
+.dataTables_info{
+  color: white;
+}
+/* Evitar que el texto se acorte en la tabla */
+.data-table table.dataTable td,
+.data-table table.dataTable th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
