@@ -1,0 +1,74 @@
+html, body {
+	height: 100%;
+}
+
+header, footer {
+	padding: 20px;
+	background-color: #333;
+	color: #fff;
+}
+
+main {
+	height: 100%;
+}
+
+.swiper-container {
+	height: 100%;
+}
+
+.swiper-slide {
+	height: 100%;
+}
+
+.swiper-slide img {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: #333;
+}
+
+.button-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+  
+  .menu {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    flex: 1;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  
